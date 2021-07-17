@@ -1,6 +1,5 @@
-import React from "react";
-
-import "./App.css";
+import React, { useContext } from "react";
+import { MainContext } from "./contexts/MainContext";
 
 function App() {
   const date = new Date();
