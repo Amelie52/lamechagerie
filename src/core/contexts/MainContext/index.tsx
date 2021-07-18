@@ -14,6 +14,7 @@ export interface Message {
   user: User;
   content: string;
   private: boolean;
+  created_date: Date;
 }
 
 export interface Conversation {
