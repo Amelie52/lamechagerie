@@ -1,9 +1,6 @@
-import {
-  Conversation,
-  conversationsListElement,
-} from "../contexts/MainContext";
+import { Conversation, conversationsListItem } from "../contexts/MainContext";
 
-export const conversationList: { data: conversationsListElement[] } = {
+export const conversationList: { data: conversationsListItem[] } = {
   data: [
     {
       users: [
@@ -283,7 +280,7 @@ export const conversation: {
           "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       },
     ],
-    id: "809857718-1829-9vh6-7297-8b724b213093",
+    id: "765657718-1829-7623-7297-8b724b210989",
     messages: [
       {
         user: {

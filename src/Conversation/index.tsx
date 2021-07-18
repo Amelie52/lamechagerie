@@ -38,7 +38,7 @@ const Conversation = () => {
         );
         dispatch({ type: FETCH_CONVERSATION.SUCCESS, conversation: data });
       } catch (error) {
-        console.error(error);
+        // display toast error or something like that
         dispatch({ type: FETCH_CONVERSATION.FAILURE });
       }
     };
@@ -82,14 +82,15 @@ const Conversation = () => {
           private: data.isPrivate,
         }
       );
+
       dispatch({
         type: CONVERSATION.NEW_MESSAGE,
         message: newMessage,
         conversationId,
       });
       reset();
-    } catch (error) {
-      console.error(error);
+    } catch {
+      // display toast error or something like that
     }
   };
 
@@ -100,26 +101,28 @@ const Conversation = () => {
     }
   };
 
-  if (conversation.messages.length === 0) return <div>aucun messages</div>;
-
   return (
     <>
       <header>
         <h2>{conversation.users.map((user) => user.name).join(", ")}</h2>
       </header>
       <div>
-        {groupedMessages().map((group) => {
-          return (
-            <React.Fragment key={group.date}>
-              <h3>{group.date}</h3>
-              <Messages
-                messages={group.messages}
-                conversationId={conversationId}
-                authId={auth.id}
-              />
-            </React.Fragment>
-          );
-        })}
+        {conversation.messages.length === 0 ? (
+          <div>aucun messages</div>
+        ) : (
+          groupedMessages().map((group) => {
+            return (
+              <React.Fragment key={group.date}>
+                <h3>{group.date}</h3>
+                <Messages
+                  messages={group.messages}
+                  conversationId={conversationId}
+                  authId={auth.id}
+                />
+              </React.Fragment>
+            );
+          })
+        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <textarea
             placeholder="your message"

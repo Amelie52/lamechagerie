@@ -21,7 +21,7 @@ const ConversationsList = () => {
                 to={`/conversation/${conversation.id}`}
                 aria-current={!!match ? "page" : undefined}
               >
-                My conversation id : {conversation.id}
+                {conversation.users.map((user) => user.name).join(", ")}
               </Link>
             </li>
           );

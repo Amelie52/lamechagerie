@@ -6,10 +6,12 @@ import Conversation from "./Conversation";
 import ConversationsList from "./ConversationsList";
 import { FETCH_CONVERSATIONS_LIST } from "./core/contexts/MainContext/action";
 import { MainContext } from "./core/contexts/MainContext";
+import { AuthContext } from "./core/contexts/AuthContext";
 
 function App() {
   const { state, dispatch } = useContext(MainContext);
-  const { isConversationsListLoading } = state;
+  const auth = useContext(AuthContext);
+  const { isConversationsListLoading, conversationsList } = state;
   const date = new Date();
 
   useEffect(() => {
@@ -32,11 +34,11 @@ function App() {
     <>
       <header role="banner">
         <span>Le bon test logo</span>
-        <span>Welcome -my-name-</span>
+        <span>Welcome {auth.name}</span>
         <span>my picture</span>
       </header>
       {isConversationsListLoading ? (
-        <div>Chargement des conversations ...</div>
+        <div>Chargement...</div>
       ) : (
         <>
           <ConversationsList />

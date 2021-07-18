@@ -1,12 +1,12 @@
 import {
   Conversation,
-  conversationsListElement,
+  conversationsListItem,
   Message,
 } from "../contexts/MainContext";
 import { conversation, conversationList } from "./mock-api-response";
 
 export function getConversationsList(): Promise<{
-  data: conversationsListElement[];
+  data: conversationsListItem[];
 }> {
   // fake GET /conversations request response
   return new Promise((resolve) => {

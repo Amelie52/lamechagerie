@@ -1,4 +1,4 @@
-import type { Conversation, conversationsListElement, Message } from ".";
+import type { Conversation, conversationsListItem, Message } from ".";
 
 export enum FETCH_CONVERSATIONS_LIST {
   SUCCESS = "main/FETCH_CONVERSATIONS_LIST/SUCCESS",
@@ -16,7 +16,7 @@ export enum CONVERSATION {
 
 export interface FetchConversationsListSuccess {
   type: FETCH_CONVERSATIONS_LIST.SUCCESS;
-  conversationsList: conversationsListElement[];
+  conversationsList: conversationsListItem[];
 }
 
 export interface FetchConversationsListFailure {

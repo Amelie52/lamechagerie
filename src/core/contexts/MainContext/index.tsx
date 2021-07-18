@@ -23,7 +23,7 @@ export interface Conversation {
   id: string;
 }
 
-export interface conversationsListElement {
+export interface conversationsListItem {
   users: User[];
   id: string;
 }

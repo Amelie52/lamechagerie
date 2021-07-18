@@ -1,9 +1,9 @@
-import { Conversation, conversationsListElement } from ".";
+import { Conversation, conversationsListItem } from ".";
 import { Action, CONVERSATION } from "./action";
 import { FETCH_CONVERSATION, FETCH_CONVERSATIONS_LIST } from "./action";
 
 export type State = {
-  conversationsList: conversationsListElement[];
+  conversationsList: conversationsListItem[];
   isConversationsListLoading: boolean;
   conversation: Conversation;
 };
@@ -52,7 +52,6 @@ export function mainReducer(
     case CONVERSATION.NEW_MESSAGE:
       return {
         ...state,
-        // verifier l'id avant de l'ajouter (si jamais on change de page entre temps)
         conversation:
           action.conversationId === state.conversation.id
             ? {
