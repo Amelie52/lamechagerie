@@ -6,4 +6,5 @@ module.exports = {
   moduleFileExtensions: ["ts", "tsx", "js"],
   setupFilesAfterEnv: ["<rootDir>/jest-setup.ts"],
   moduleDirectories: ["node_modules"],
+  testEnvironment: "jsdom",
 };

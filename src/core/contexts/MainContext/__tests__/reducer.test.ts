@@ -2,9 +2,7 @@ import {
   CONVERSATION,
   ConversationNewMessage,
   FetchConversationFailure,
-  FetchConversationRequest,
   FetchConversationsListFailure,
-  FetchConversationsListRequest,
   FetchConversationsListSuccess,
   FetchConversationSuccess,
   FETCH_CONVERSATION,
@@ -21,28 +19,9 @@ describe("mainContext/reducer", () => {
       users: [],
       id: "",
     },
-    isConversationLoading: false,
   };
 
   describe("main/FETCH_CONVERSATIONS_LIST", () => {
-    it("SHOULD return the right state when a FETCH_CONVERSATIONS_LIST.REQUEST is dispatched", () => {
-      const action: FetchConversationsListRequest = {
-        type: FETCH_CONVERSATIONS_LIST.REQUEST,
-      };
-      const state = mainReducer(initialState, action);
-
-      expect(state).toEqual({
-        conversationsList: [],
-        isConversationsListLoading: true,
-        conversation: {
-          messages: [],
-          users: [],
-          id: "",
-        },
-        isConversationLoading: false,
-      });
-    });
-
     it("SHOULD return the right state when a FETCH_CONVERSATIONS_LIST.SUCCESS is dispatched", () => {
       const action: FetchConversationsListSuccess = {
         type: FETCH_CONVERSATIONS_LIST.SUCCESS,
@@ -68,7 +47,6 @@ describe("mainContext/reducer", () => {
           users: [],
           id: "",
         },
-        isConversationLoading: false,
       });
     });
 
@@ -86,30 +64,11 @@ describe("mainContext/reducer", () => {
           users: [],
           id: "",
         },
-        isConversationLoading: false,
       });
     });
   });
 
   describe("main/FETCH_CONVERSATION", () => {
-    it("SHOULD return the right state when a FETCH_CONVERSATION.REQUEST is dispatched", () => {
-      const action: FetchConversationRequest = {
-        type: FETCH_CONVERSATION.REQUEST,
-      };
-      const state = mainReducer(initialState, action);
-
-      expect(state).toEqual({
-        conversationsList: [],
-        isConversationsListLoading: false,
-        conversation: {
-          messages: [],
-          users: [],
-          id: "",
-        },
-        isConversationLoading: true,
-      });
-    });
-
     it("SHOULD return the right state when a FETCH_CONVERSATION.SUCCESS is dispatched", () => {
       const action: FetchConversationSuccess = {
         type: FETCH_CONVERSATION.SUCCESS,
@@ -119,11 +78,13 @@ describe("mainContext/reducer", () => {
               user: { name: "Cléo", id: "456", picture: "my-image" },
               content: "Hello !",
               private: false,
+              created_date: new Date("2020-11-18T13:31:10.000Z"),
             },
             {
               user: { name: "John", id: "435", picture: "my-image" },
               content: "Hello Cléo !",
               private: false,
+              created_date: new Date("2020-11-18T13:32:10.000Z"),
             },
           ],
           users: [
@@ -144,11 +105,13 @@ describe("mainContext/reducer", () => {
               user: { name: "Cléo", id: "456", picture: "my-image" },
               content: "Hello !",
               private: false,
+              created_date: new Date("2020-11-18T13:31:10.000Z"),
             },
             {
               user: { name: "John", id: "435", picture: "my-image" },
               content: "Hello Cléo !",
               private: false,
+              created_date: new Date("2020-11-18T13:32:10.000Z"),
             },
           ],
           users: [
@@ -157,7 +120,6 @@ describe("mainContext/reducer", () => {
           ],
           id: "890",
         },
-        isConversationLoading: false,
       });
     });
 
@@ -175,7 +137,6 @@ describe("mainContext/reducer", () => {
           users: [],
           id: "",
         },
-        isConversationLoading: false,
       });
     });
   });
@@ -188,7 +149,9 @@ describe("mainContext/reducer", () => {
           user: { name: "John", id: "435", picture: "my-image" },
           content: "Hello Cléo !",
           private: false,
+          created_date: new Date("2020-11-18T13:31:10.000Z"),
         },
+        conversationId: "890",
       };
       const state = mainReducer(
         {
@@ -200,12 +163,12 @@ describe("mainContext/reducer", () => {
                 user: { name: "Cléo", id: "456", picture: "my-image" },
                 content: "Hello !",
                 private: false,
+                created_date: new Date("2020-11-18T13:29:10.000Z"),
               },
             ],
             users: [{ name: "Cléo", id: "456", picture: "my-image" }],
             id: "890",
           },
-          isConversationLoading: false,
         },
         action
       );
@@ -219,17 +182,42 @@ describe("mainContext/reducer", () => {
               user: { name: "Cléo", id: "456", picture: "my-image" },
               content: "Hello !",
               private: false,
+              created_date: new Date("2020-11-18T13:29:10.000Z"),
             },
             {
               user: { name: "John", id: "435", picture: "my-image" },
               content: "Hello Cléo !",
               private: false,
+              created_date: new Date("2020-11-18T13:31:10.000Z"),
             },
           ],
           users: [{ name: "Cléo", id: "456", picture: "my-image" }],
           id: "890",
         },
-        isConversationLoading: false,
+      });
+    });
+
+    it("SHOULD not update conversation if conversation id is not the same WHEN CONVERSATION.NEW_MESSAGE is dispatched", () => {
+      const action: ConversationNewMessage = {
+        type: CONVERSATION.NEW_MESSAGE,
+        message: {
+          user: { name: "John", id: "435", picture: "my-image" },
+          content: "Hello Cléo !",
+          private: false,
+          created_date: new Date("2020-11-18T13:31:10.000Z"),
+        },
+        conversationId: "123",
+      };
+      const state = mainReducer(initialState, action);
+
+      expect(state).toEqual({
+        conversationsList: [],
+        isConversationsListLoading: false,
+        conversation: {
+          messages: [],
+          users: [],
+          id: "",
+        },
       });
     });
   });

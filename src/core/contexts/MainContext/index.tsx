@@ -14,6 +14,7 @@ export interface Message {
   user: User;
   content: string;
   private: boolean;
+  created_date: Date;
 }
 
 export interface Conversation {
@@ -22,7 +23,7 @@ export interface Conversation {
   id: string;
 }
 
-export interface conversationsListElement {
+export interface conversationsListItem {
   users: User[];
   id: string;
 }
