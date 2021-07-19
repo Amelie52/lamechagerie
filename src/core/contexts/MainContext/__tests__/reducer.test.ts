@@ -2,6 +2,7 @@ import {
   CONVERSATION,
   ConversationNewMessage,
   FetchConversationFailure,
+  FetchConversationRequest,
   FetchConversationsListFailure,
   FetchConversationsListSuccess,
   FetchConversationSuccess,
@@ -19,6 +20,7 @@ describe("mainContext/reducer", () => {
       users: [],
       id: "",
     },
+    isConversationLoading: false,
   };
 
   describe("main/FETCH_CONVERSATIONS_LIST", () => {
@@ -27,7 +29,7 @@ describe("mainContext/reducer", () => {
         type: FETCH_CONVERSATIONS_LIST.SUCCESS,
         conversationsList: [
           {
-            users: [{ name: "Cléo", id: "456", picture: "my-image" }],
+            users: [{ name: "Simba", id: "456", picture: "my-image" }],
             id: "123",
           },
         ],
@@ -37,7 +39,7 @@ describe("mainContext/reducer", () => {
       expect(state).toEqual({
         conversationsList: [
           {
-            users: [{ name: "Cléo", id: "456", picture: "my-image" }],
+            users: [{ name: "Simba", id: "456", picture: "my-image" }],
             id: "123",
           },
         ],
@@ -47,6 +49,7 @@ describe("mainContext/reducer", () => {
           users: [],
           id: "",
         },
+        isConversationLoading: false,
       });
     });
 
@@ -64,32 +67,51 @@ describe("mainContext/reducer", () => {
           users: [],
           id: "",
         },
+        isConversationLoading: false,
       });
     });
   });
 
   describe("main/FETCH_CONVERSATION", () => {
+    it("SHOULD return the right state when a FETCH_CONVERSATION.REQUEST is dispatched", () => {
+      const action: FetchConversationRequest = {
+        type: FETCH_CONVERSATION.REQUEST,
+      };
+      const state = mainReducer(initialState, action);
+
+      expect(state).toEqual({
+        conversationsList: [],
+        isConversationsListLoading: false,
+        conversation: {
+          messages: [],
+          users: [],
+          id: "",
+        },
+        isConversationLoading: true,
+      });
+    });
+
     it("SHOULD return the right state when a FETCH_CONVERSATION.SUCCESS is dispatched", () => {
       const action: FetchConversationSuccess = {
         type: FETCH_CONVERSATION.SUCCESS,
         conversation: {
           messages: [
             {
-              user: { name: "Cléo", id: "456", picture: "my-image" },
+              user: { name: "Simba", id: "456", picture: "my-image" },
               content: "Hello !",
               private: false,
               created_date: new Date("2020-11-18T13:31:10.000Z"),
             },
             {
-              user: { name: "John", id: "435", picture: "my-image" },
-              content: "Hello Cléo !",
+              user: { name: "Nala", id: "435", picture: "my-image" },
+              content: "Hello Simba !",
               private: false,
               created_date: new Date("2020-11-18T13:32:10.000Z"),
             },
           ],
           users: [
-            { name: "Cléo", id: "456", picture: "my-image" },
-            { name: "John", id: "435", picture: "my-image" },
+            { name: "Simba", id: "456", picture: "my-image" },
+            { name: "Nala", id: "435", picture: "my-image" },
           ],
           id: "890",
         },
@@ -102,24 +124,25 @@ describe("mainContext/reducer", () => {
         conversation: {
           messages: [
             {
-              user: { name: "Cléo", id: "456", picture: "my-image" },
+              user: { name: "Simba", id: "456", picture: "my-image" },
               content: "Hello !",
               private: false,
               created_date: new Date("2020-11-18T13:31:10.000Z"),
             },
             {
-              user: { name: "John", id: "435", picture: "my-image" },
-              content: "Hello Cléo !",
+              user: { name: "Nala", id: "435", picture: "my-image" },
+              content: "Hello Simba !",
               private: false,
               created_date: new Date("2020-11-18T13:32:10.000Z"),
             },
           ],
           users: [
-            { name: "Cléo", id: "456", picture: "my-image" },
-            { name: "John", id: "435", picture: "my-image" },
+            { name: "Simba", id: "456", picture: "my-image" },
+            { name: "Nala", id: "435", picture: "my-image" },
           ],
           id: "890",
         },
+        isConversationLoading: false,
       });
     });
 
@@ -137,6 +160,7 @@ describe("mainContext/reducer", () => {
           users: [],
           id: "",
         },
+        isConversationLoading: false,
       });
     });
   });
@@ -146,8 +170,8 @@ describe("mainContext/reducer", () => {
       const action: ConversationNewMessage = {
         type: CONVERSATION.NEW_MESSAGE,
         message: {
-          user: { name: "John", id: "435", picture: "my-image" },
-          content: "Hello Cléo !",
+          user: { name: "Nala", id: "435", picture: "my-image" },
+          content: "Hello Simba !",
           private: false,
           created_date: new Date("2020-11-18T13:31:10.000Z"),
         },
@@ -157,16 +181,17 @@ describe("mainContext/reducer", () => {
         {
           conversationsList: [],
           isConversationsListLoading: false,
+          isConversationLoading: false,
           conversation: {
             messages: [
               {
-                user: { name: "Cléo", id: "456", picture: "my-image" },
+                user: { name: "Simba", id: "456", picture: "my-image" },
                 content: "Hello !",
                 private: false,
                 created_date: new Date("2020-11-18T13:29:10.000Z"),
               },
             ],
-            users: [{ name: "Cléo", id: "456", picture: "my-image" }],
+            users: [{ name: "Simba", id: "456", picture: "my-image" }],
             id: "890",
           },
         },
@@ -179,21 +204,22 @@ describe("mainContext/reducer", () => {
         conversation: {
           messages: [
             {
-              user: { name: "Cléo", id: "456", picture: "my-image" },
+              user: { name: "Simba", id: "456", picture: "my-image" },
               content: "Hello !",
               private: false,
               created_date: new Date("2020-11-18T13:29:10.000Z"),
             },
             {
-              user: { name: "John", id: "435", picture: "my-image" },
-              content: "Hello Cléo !",
+              user: { name: "Nala", id: "435", picture: "my-image" },
+              content: "Hello Simba !",
               private: false,
               created_date: new Date("2020-11-18T13:31:10.000Z"),
             },
           ],
-          users: [{ name: "Cléo", id: "456", picture: "my-image" }],
+          users: [{ name: "Simba", id: "456", picture: "my-image" }],
           id: "890",
         },
+        isConversationLoading: false,
       });
     });
 
@@ -201,8 +227,8 @@ describe("mainContext/reducer", () => {
       const action: ConversationNewMessage = {
         type: CONVERSATION.NEW_MESSAGE,
         message: {
-          user: { name: "John", id: "435", picture: "my-image" },
-          content: "Hello Cléo !",
+          user: { name: "Nala", id: "435", picture: "my-image" },
+          content: "Hello Simba !",
           private: false,
           created_date: new Date("2020-11-18T13:31:10.000Z"),
         },
@@ -218,6 +244,7 @@ describe("mainContext/reducer", () => {
           users: [],
           id: "",
         },
+        isConversationLoading: false,
       });
     });
   });

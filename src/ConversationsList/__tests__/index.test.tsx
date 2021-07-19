@@ -13,7 +13,7 @@ describe("src/ConversationsList", () => {
     jest.clearAllMocks();
   });
 
-  it("SHOULD render correctly component if there is no conversation", async () => {
+  it("SHOULD render correctly component if there is no conversation", () => {
     render(
       <MainProvider>
         <ConversationsList />
@@ -23,7 +23,7 @@ describe("src/ConversationsList", () => {
     expect(screen.getByText("Aucune conversation")).toBeInTheDocument();
   });
 
-  it("SHOULD render correctly component if there are conversations", async () => {
+  it("SHOULD render correctly component if there are conversations", () => {
     render(
       <MemoryRouter
         initialEntries={["/conversation/78967718-32ec-313a-89ca-8b724b26c888"]}
@@ -42,10 +42,13 @@ describe("src/ConversationsList", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText("Cléo")).toHaveAttribute("aria-current", "page");
-    expect(screen.getByText("Clara")).not.toHaveAttribute(
-      "aria-current",
-      "page"
-    );
+    expect(
+      screen.getByTestId("navigation-link-78967718-32ec-313a-89ca-8b724b26c888")
+    ).toHaveAttribute("aria-current", "page");
+    expect(
+      screen.getByTestId(
+        "navigation-link-765657718-1829-7623-7297-8b724b210989"
+      )
+    ).not.toHaveAttribute("aria-current", "page");
   });
 });

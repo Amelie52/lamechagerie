@@ -5,10 +5,10 @@ export const conversationList: { data: conversationsListItem[] } = {
     {
       users: [
         {
-          name: "Cléo",
+          name: "Simba",
           id: "44985718-32ec-0990-1123-8b724b260974",
           picture:
-            "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/3687957/pexels-photo-3687957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
       ],
       id: "78967718-32ec-313a-89ca-8b724b26c888",
@@ -16,10 +16,10 @@ export const conversationList: { data: conversationsListItem[] } = {
     {
       users: [
         {
-          name: "John",
+          name: "Nala",
           id: "54567718-32ec-9121-7297-8b724b260998",
           picture:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
       ],
       id: "96297718-32ec-313a-7297-8b724b26c062",
@@ -28,16 +28,16 @@ export const conversationList: { data: conversationsListItem[] } = {
     {
       users: [
         {
-          name: "John",
+          name: "Nala",
           id: "54567718-32ec-9121-7297-8b724b260998",
           picture:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
         {
-          name: "Cléo",
+          name: "Simba",
           id: "44985718-32ec-0990-1123-8b724b260974",
           picture:
-            "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/3687957/pexels-photo-3687957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
       ],
       id: "33327718-32ec-14ft-7297-8b724b260996",
@@ -45,10 +45,10 @@ export const conversationList: { data: conversationsListItem[] } = {
     {
       users: [
         {
-          name: "Karim",
+          name: "Gribouille",
           id: "89826318-32ec-9121-7297-8b724b260332",
           picture:
-            "https://images.pexels.com/photos/1172207/pexels-photo-1172207.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
       ],
       id: "809857718-1829-9vh6-7297-8b724b213093",
@@ -56,10 +56,10 @@ export const conversationList: { data: conversationsListItem[] } = {
     {
       users: [
         {
-          name: "Clara",
+          name: "Felix",
           id: "77626318-7809-9121-7297-8b724b206612",
           picture:
-            "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/821736/pexels-photo-821736.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
       ],
       id: "765657718-1829-7623-7297-8b724b210989",
@@ -73,44 +73,44 @@ export const conversation: {
   "78967718-32ec-313a-89ca-8b724b26c888": {
     users: [
       {
-        name: "Cléo",
+        name: "Simba",
         id: "44985718-32ec-0990-1123-8b724b260974",
         picture:
-          "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          "https://images.pexels.com/photos/3687957/pexels-photo-3687957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       },
     ],
     id: "78967718-32ec-313a-89ca-8b724b26c888",
     messages: [
       {
         user: {
-          name: "Cléo",
+          name: "Simba",
           id: "44985718-32ec-0990-1123-8b724b260974",
           picture:
-            "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/3687957/pexels-photo-3687957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hey hello !",
+        content: "MEEOOOOOOwww",
         private: false,
         created_date: new Date("2020-10-15T11:00:00.000Z"),
       },
       {
         user: {
-          name: "Cléo",
+          name: "Simba",
           id: "44985718-32ec-0990-1123-8b724b260974",
           picture:
-            "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/3687957/pexels-photo-3687957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "How are you ?",
+        content: "Miou ?",
         private: false,
         created_date: new Date("2020-12-18T13:05:10.000Z"),
       },
       {
         user: {
-          name: "Jeanne",
+          name: "Tigrou",
           id: "50a67718-32ec-414a-89ca-8b724b26c2ab",
           picture:
-            "https://images.pexels.com/photos/789296/pexels-photo-789296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/156321/pexels-photo-156321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hello Cléo! Find and you ?",
+        content: "MRRRooooowww",
         private: false,
         created_date: new Date("2020-12-18T13:06:10.000Z"),
       },
@@ -119,44 +119,44 @@ export const conversation: {
   "96297718-32ec-313a-7297-8b724b26c062": {
     users: [
       {
-        name: "John",
+        name: "Nala",
         id: "54567718-32ec-9121-7297-8b724b260998",
         picture:
-          "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       },
     ],
     id: "96297718-32ec-313a-7297-8b724b26c062",
     messages: [
       {
         user: {
-          name: "John",
+          name: "Nala",
           id: "54567718-32ec-9121-7297-8b724b260998",
           picture:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hey hello !",
+        content: "Maouuwww",
         private: false,
         created_date: new Date("2020-12-18T13:05:10.000Z"),
       },
       {
         user: {
-          name: "John",
+          name: "Nala",
           id: "54567718-32ec-9121-7297-8b724b260998",
           picture:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "How are you ? \n\n djiezjdiozeiz",
+        content: "Miaaaou \n\n meooow!!",
         private: false,
         created_date: new Date("2020-12-18T13:06:10.000Z"),
       },
       {
         user: {
-          name: "Jeanne",
+          name: "Tigrou",
           id: "50a67718-32ec-414a-89ca-8b724b26c2ab",
           picture:
-            "https://images.pexels.com/photos/789296/pexels-photo-789296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/156321/pexels-photo-156321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hello John! Find and you ?",
+        content: "Miii !",
         private: false,
         created_date: new Date("2020-12-18T13:07:10.000Z"),
       },
@@ -165,61 +165,61 @@ export const conversation: {
   "33327718-32ec-14ft-7297-8b724b260996": {
     users: [
       {
-        name: "John",
+        name: "Nala",
         id: "54567718-32ec-9121-7297-8b724b260998",
         picture:
-          "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       },
       {
-        name: "Cléo",
+        name: "Simba",
         id: "44985718-32ec-0990-1123-8b724b260974",
         picture:
-          "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          "https://images.pexels.com/photos/3687957/pexels-photo-3687957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       },
     ],
     id: "33327718-32ec-14ft-7297-8b724b260996",
     messages: [
       {
         user: {
-          name: "Cléo",
+          name: "Simba",
           id: "44985718-32ec-0990-1123-8b724b260974",
           picture:
-            "https://images.pexels.com/photos/3916455/pexels-photo-3916455.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/3687957/pexels-photo-3687957.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Helloooo !",
+        content: "Meow !",
         private: false,
         created_date: new Date("2020-12-18T13:10:10.000Z"),
       },
       {
         user: {
-          name: "John",
+          name: "Nala",
           id: "54567718-32ec-9121-7297-8b724b260998",
           picture:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "How are you ?",
+        content: "Miaaaou",
         private: false,
         created_date: new Date("2020-12-18T13:11:10.000Z"),
       },
       {
         user: {
-          name: "Jeanne",
+          name: "Tigrou",
           id: "50a67718-32ec-414a-89ca-8b724b26c2ab",
           picture:
-            "https://images.pexels.com/photos/789296/pexels-photo-789296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/156321/pexels-photo-156321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hello John and cléo! Find and you ?",
+        content: "Rrrr..",
         private: false,
         created_date: new Date("2020-12-18T13:12:10.000Z"),
       },
       {
         user: {
-          name: "John",
+          name: "Nala",
           id: "54567718-32ec-9121-7297-8b724b260998",
           picture:
-            "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/156934/pexels-photo-156934.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Find!",
+        content: "Miaou ?",
         private: false,
         created_date: new Date("2020-12-18T13:13:10.000Z"),
       },
@@ -228,44 +228,44 @@ export const conversation: {
   "809857718-1829-9vh6-7297-8b724b213093": {
     users: [
       {
-        name: "Karim",
+        name: "Gribouille",
         id: "89826318-32ec-9121-7297-8b724b260332",
         picture:
-          "https://images.pexels.com/photos/1172207/pexels-photo-1172207.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       },
     ],
     id: "809857718-1829-9vh6-7297-8b724b213093",
     messages: [
       {
         user: {
-          name: "Karim",
+          name: "Gribouille",
           id: "89826318-32ec-9121-7297-8b724b260332",
           picture:
-            "https://images.pexels.com/photos/1172207/pexels-photo-1172207.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hey hello !",
+        content: "MEEOOOOOOwww",
         private: false,
         created_date: new Date("2020-12-18T13:20:10.000Z"),
       },
       {
         user: {
-          name: "Karim",
+          name: "Gribouille",
           id: "89826318-32ec-9121-7297-8b724b260332",
           picture:
-            "https://images.pexels.com/photos/1172207/pexels-photo-1172207.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "How are you ?",
+        content: "Miaaaou",
         private: false,
         created_date: new Date("2020-12-18T13:21:10.000Z"),
       },
       {
         user: {
-          name: "Jeanne",
+          name: "Tigrou",
           id: "50a67718-32ec-414a-89ca-8b724b26c2ab",
           picture:
-            "https://images.pexels.com/photos/789296/pexels-photo-789296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/156321/pexels-photo-156321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hello Karim! Find and you ?",
+        content: "MMmmm",
         private: false,
         created_date: new Date("2020-12-18T13:22:10.000Z"),
       },
@@ -274,44 +274,44 @@ export const conversation: {
   "765657718-1829-7623-7297-8b724b210989": {
     users: [
       {
-        name: "Clara",
+        name: "Felix",
         id: "77626318-7809-9121-7297-8b724b206612",
         picture:
-          "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+          "https://images.pexels.com/photos/821736/pexels-photo-821736.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       },
     ],
     id: "765657718-1829-7623-7297-8b724b210989",
     messages: [
       {
         user: {
-          name: "Clara",
+          name: "Felix",
           id: "77626318-7809-9121-7297-8b724b206612",
           picture:
-            "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/821736/pexels-photo-821736.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hey hello !",
+        content: "Shhhhh",
         private: false,
         created_date: new Date("2020-12-18T13:30:10.000Z"),
       },
       {
         user: {
-          name: "Clara",
+          name: "Felix",
           id: "77626318-7809-9121-7297-8b724b206612",
           picture:
-            "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+            "https://images.pexels.com/photos/821736/pexels-photo-821736.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "How are you ?",
+        content: "Miaou..",
         private: false,
         created_date: new Date("2020-12-18T13:31:10.000Z"),
       },
       {
         user: {
-          name: "Jeanne",
+          name: "Tigrou",
           id: "50a67718-32ec-414a-89ca-8b724b26c2ab",
           picture:
-            "https://images.pexels.com/photos/789296/pexels-photo-789296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+            "https://images.pexels.com/photos/156321/pexels-photo-156321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         },
-        content: "Hello Clara! Find and you ?",
+        content: "MIAOU ?",
         private: false,
         created_date: new Date("2020-12-18T13:32:10.000Z"),
       },

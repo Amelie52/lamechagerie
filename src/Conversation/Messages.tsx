@@ -1,37 +1,48 @@
+import dayjs from "dayjs";
 import React from "react";
-import Date from "../common/date";
+
 import { Message } from "../core/contexts/MainContext";
+import {
+  Content,
+  Hour,
+  MessageContent,
+  UserName,
+  Wrapper,
+  Container,
+} from "./Messages.styled";
+
+interface MessagesProps {
+  messages: Message[];
+  conversationId: string;
+  authId: string;
+  isDirectMessage: boolean;
+}
 
 const Messages = ({
   messages,
   conversationId,
   authId,
-}: {
-  messages: Message[];
-  conversationId: string;
-  authId: string;
-}) => {
-  return (
-    <>
-      {messages.map((message, key) => (
-        <div
-          key={`${message.user}-${key}-${conversationId}`}
-          style={{
-            backgroundColor:
-              message.user.id === authId ? "transparent" : "papayawhip",
-            borderBottom: "1px solid",
-          }}
-        >
-          <div>user : {message.user.name}</div>
-          <div style={{ whiteSpace: "pre-wrap" }}>{message.content}</div>
-          <div>
-            date <Date date={message.created_date} />
-          </div>
-          <div>is private ? {message.private ? "true" : "false"}</div>
-        </div>
-      ))}
-    </>
-  );
-};
+  isDirectMessage,
+}: MessagesProps) => (
+  <>
+    {messages.map((message, key) => {
+      const isUserNameDisplay = !isDirectMessage && message.user.id !== authId;
+      const isNotMe = message.user.id !== authId;
+      const hour = dayjs(message.created_date).format("HH:mm");
+
+      return (
+        <Container key={`${key}-${conversationId}`} isLeft={isNotMe}>
+          {isUserNameDisplay && <UserName>{message.user.name}</UserName>}
+          <Wrapper isLeft={isNotMe}>
+            <MessageContent isPrivate={message.private}>
+              <Content>{message.content}</Content>
+            </MessageContent>
+            <Hour>{hour}</Hour>
+          </Wrapper>
+        </Container>
+      );
+    })}
+  </>
+);
 
 export default Messages;

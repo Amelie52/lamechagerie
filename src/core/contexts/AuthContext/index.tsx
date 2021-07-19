@@ -16,9 +16,9 @@ export function AuthProvider(props: { children: ReactNode }) {
     <AuthContext.Provider
       value={{
         id: "50a67718-32ec-414a-89ca-8b724b26c2ab",
-        name: "Jeanne",
+        name: "Tigrou",
         picture:
-          "https://images.pexels.com/photos/789296/pexels-photo-789296.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          "https://images.pexels.com/photos/156321/pexels-photo-156321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
       }}
     >
       {children}

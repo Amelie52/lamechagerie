@@ -1,9 +1,16 @@
 import React, { FC, ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
+import { ThemeProvider } from "styled-components";
+
 import { AuthProvider } from "../../core/contexts/AuthContext";
+import { theme } from "../../theme";
 
 const AllTheProviders: FC = ({ children }) => {
-  return <AuthProvider>{children}</AuthProvider>;
+  return (
+    <AuthProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    </AuthProvider>
+  );
 };
 
 const customRender = (

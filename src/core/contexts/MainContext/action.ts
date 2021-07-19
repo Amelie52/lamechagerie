@@ -6,6 +6,7 @@ export enum FETCH_CONVERSATIONS_LIST {
 }
 
 export enum FETCH_CONVERSATION {
+  REQUEST = "main/FETCH_CONVERSATION/REQUEST",
   SUCCESS = "main/FETCH_CONVERSATION/SUCCESS",
   FAILURE = "main/FETCH_CONVERSATION/FAILURE",
 }
@@ -21,6 +22,10 @@ export interface FetchConversationsListSuccess {
 
 export interface FetchConversationsListFailure {
   type: FETCH_CONVERSATIONS_LIST.FAILURE;
+}
+
+export interface FetchConversationRequest {
+  type: FETCH_CONVERSATION.REQUEST;
 }
 
 export interface FetchConversationSuccess {
@@ -41,6 +46,7 @@ export interface ConversationNewMessage {
 export type Action =
   | FetchConversationsListSuccess
   | FetchConversationsListFailure
+  | FetchConversationRequest
   | FetchConversationSuccess
   | FetchConversationFailure
   | ConversationNewMessage;

@@ -6,6 +6,7 @@ export type State = {
   conversationsList: conversationsListItem[];
   isConversationsListLoading: boolean;
   conversation: Conversation;
+  isConversationLoading: boolean;
 };
 
 export const initialState = {
@@ -16,6 +17,7 @@ export const initialState = {
     users: [],
     id: "",
   },
+  isConversationLoading: false,
 };
 
 export function mainReducer(
@@ -35,10 +37,16 @@ export function mainReducer(
         conversationsList: [],
         isConversationsListLoading: false,
       };
+    case FETCH_CONVERSATION.REQUEST:
+      return {
+        ...state,
+        isConversationLoading: true,
+      };
     case FETCH_CONVERSATION.SUCCESS:
       return {
         ...state,
         conversation: action.conversation,
+        isConversationLoading: false,
       };
     case FETCH_CONVERSATION.FAILURE:
       return {
@@ -48,6 +56,7 @@ export function mainReducer(
           users: [],
           id: "",
         },
+        isConversationLoading: false,
       };
     case CONVERSATION.NEW_MESSAGE:
       return {

@@ -1,15 +1,16 @@
 import * as React from "react";
-import App from "../App";
-import { render, screen, waitFor } from "../config/jest/test-utils";
-import { MainContext } from "../core/contexts/MainContext";
-import { initialState } from "../core/contexts/MainContext/reducer";
-import * as conversationsServices from "../core/services/conversations";
-import * as mockApiResponse from "../core/services/mock-api-response";
 import { BrowserRouter } from "react-router-dom";
 
-jest.mock("../Conversation", () => () => <div data-mock="Conversation" />);
+import App from "..";
+import { render, screen, waitFor } from "../../config/jest/test-utils";
+import { MainContext } from "../../core/contexts/MainContext";
+import { initialState } from "../../core/contexts/MainContext/reducer";
+import * as conversationsServices from "../../core/services/conversations";
+import * as mockApiResponse from "../../core/services/mock-api-response";
 
-jest.mock("../ConversationsList", () => () => (
+jest.mock("../../Conversation", () => () => <div data-mock="Conversation" />);
+
+jest.mock("../../ConversationsList", () => () => (
   <div data-mock="ConversationList" />
 ));
 
@@ -33,10 +34,8 @@ describe("src/App", () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByText("Welcome Jeanne")).toBeInTheDocument();
-    expect(
-      screen.getByText("Please select a conversation.")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Bienvenue Tigrou !")).toBeInTheDocument();
+    expect(screen.getByText("Sélectionnez une discussion")).toBeInTheDocument();
   });
 
   it("SHOULD fetch conversations list", async () => {

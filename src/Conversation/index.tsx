@@ -1,28 +1,46 @@
-import React, { useContext, useEffect } from "react";
+import React, { useRef, useMemo, useContext, useEffect } from "react";
 import type { KeyboardEvent } from "react";
 import { useParams } from "react-router";
-import { AuthContext } from "../core/contexts/AuthContext";
+import { SubmitHandler, useForm } from "react-hook-form";
+import dayjs from "dayjs";
 
+import * as conversationsServices from "../core/services/conversations";
+import Messages from "./Messages";
+import { AuthContext } from "../core/contexts/AuthContext";
 import { MainContext, Message } from "../core/contexts/MainContext";
 import {
   CONVERSATION,
   FETCH_CONVERSATION,
 } from "../core/contexts/MainContext/action";
-import * as conversationsServices from "../core/services/conversations";
-import dayjs from "dayjs";
-import Messages from "./Messages";
-import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupItemImg,
+} from "../common/Avatar";
+import { DefaultText } from "../common/DefaultText";
+import {
+  Container,
+  Form,
+  Header,
+  Heading3,
+  Label,
+  MessagesContainer,
+  MessagesWrapper,
+  SubTitle,
+  Textarea,
+} from "./styled";
 
-type Inputs = {
+interface Inputs {
   message: string;
   isPrivate: boolean;
-};
+}
 
 const Conversation = () => {
   const { state, dispatch } = useContext(MainContext);
+  const { conversation, isConversationLoading } = state;
   const auth = useContext(AuthContext);
   const { conversationId } = useParams<{ conversationId: string }>();
-  const { conversation } = state;
+  const usersName = conversation.users.map((user) => user.name).join(", ");
   const {
     register,
     handleSubmit,
@@ -30,8 +48,12 @@ const Conversation = () => {
     reset,
   } = useForm();
 
+  const MessagesWrapperRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const fetchConversation = async () => {
+      dispatch({ type: FETCH_CONVERSATION.REQUEST });
+
       try {
         const { data } = await conversationsServices.getConversation(
           conversationId
@@ -48,7 +70,11 @@ const Conversation = () => {
     }
   }, [conversationId]);
 
-  const groupedMessages = () => {
+  useEffect(() => {
+    MessagesWrapperRef?.current?.scrollIntoView(false);
+  }, [conversation.messages]);
+
+  const groupedMessages = useMemo(() => {
     const groups = conversation.messages.reduce(
       (groups: { [key: string]: Message[] }, message: Message) => {
         const date = dayjs(message.created_date).format("DD/MM/YYYY");
@@ -68,7 +94,7 @@ const Conversation = () => {
         messages: groups[date],
       };
     });
-  };
+  }, [conversation.messages]);
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -101,42 +127,71 @@ const Conversation = () => {
     }
   };
 
+  if (isConversationLoading && !conversation.id)
+    return <DefaultText>Chargement</DefaultText>;
+
   return (
     <>
-      <header>
-        <h2>{conversation.users.map((user) => user.name).join(", ")}</h2>
-      </header>
-      <div>
-        {conversation.messages.length === 0 ? (
-          <div>aucun messages</div>
-        ) : (
-          groupedMessages().map((group) => {
-            return (
-              <React.Fragment key={group.date}>
-                <h3>{group.date}</h3>
-                <Messages
-                  messages={group.messages}
-                  conversationId={conversationId}
-                  authId={auth.id}
+      <Header>
+        {conversation.users.length > 0 && (
+          <>
+            <AvatarGroup>
+              <AvatarGroupItem>
+                <AvatarGroupItemImg
+                  src={conversation.users[0].picture}
+                  alt={`Photo de ${conversation.users[0].name}`}
                 />
-              </React.Fragment>
-            );
-          })
+              </AvatarGroupItem>
+              {conversation.users[1] && (
+                <AvatarGroupItem>
+                  <AvatarGroupItemImg
+                    src={conversation.users[1].picture}
+                    alt={`Photo de ${conversation.users[1].name}`}
+                  />
+                </AvatarGroupItem>
+              )}
+            </AvatarGroup>
+            <SubTitle>{usersName}</SubTitle>
+          </>
         )}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <textarea
-            placeholder="your message"
-            onKeyPress={handleUserKeyPress}
+      </Header>
+      <Container>
+        <MessagesContainer>
+          <MessagesWrapper ref={MessagesWrapperRef}>
+            {conversation.messages.length === 0 ? (
+              <DefaultText>Aucun message</DefaultText>
+            ) : (
+              groupedMessages.map((group) => {
+                return (
+                  <React.Fragment key={group.date}>
+                    <Heading3>{group.date}</Heading3>
+                    <Messages
+                      messages={group.messages}
+                      conversationId={conversationId}
+                      authId={auth.id}
+                      isDirectMessage={conversation.users.length === 1}
+                    />
+                  </React.Fragment>
+                );
+              })
+            )}
+          </MessagesWrapper>
+        </MessagesContainer>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <Textarea
+            title="Votre message"
+            placeholder="Message..."
+            rows={1}
+            isRequired={errors.message}
             {...register("message", { required: true })}
+            onKeyPress={handleUserKeyPress}
           />
-          {errors.message && <span>required !</span>}
-          <label>
+          <Label>
             <input type="checkbox" {...register("isPrivate")} />
-            private
-          </label>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+            privé
+          </Label>
+        </Form>
+      </Container>
     </>
   );
 };
