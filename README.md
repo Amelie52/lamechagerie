@@ -16,12 +16,16 @@ Lorsque vous sélectionnez une discussion dans la liste, un appel à l'API est f
 
 Les appels aux API ont été mocké afin d'afficher des discussions de base (core/services/conversations). Différents setTimeout ont été ajouté afin de mocker au plus proche le délais de réponse des requêtes.
 
-Deux context ont été crée :
+Deux context ont été créé :
 
 - `MainContext` qui permet de récupérer toutes les informations concernant les conversations.
-- `AuthContext` qui permet de récupérer les (fausses) informations de notre utilisateur suite à un potentiel login.
+- `AuthContext` qui permet de récupérer les informations de notre utilisateur suite à un potentiel login.
 
 ## Scripts disponibles
+
+### Prérequis
+
+Il est conseillé d'utiliser la dernière version stable de nodejs.
 
 Dans le répertoire du projet, vous pouvez exécuter :
 

@@ -66,6 +66,7 @@ const Conversation = () => {
     };
 
     if (conversationId) {
+      reset();
       fetchConversation();
     }
   }, [conversationId]);
